@@ -2,7 +2,6 @@ services:
   api:
     build: .
     container_name: minihoop-api
-    env_file: .env.local
     volumes:
       - .:/app
     ports:

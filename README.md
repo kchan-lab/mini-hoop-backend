@@ -104,7 +104,26 @@ cp .env.dev .env
 dotenvx decrypt -f .env
 ```
 
-※ まだ整理中のため、後で追記します。
+### 初回セットアップ
 
+1. Docker イメージをビルド
 ```bash
-# TODO: docker compose / Rails 初期設定 / DB マイグレーション手順などを記載
+docker compose build
+```
+
+2. データベースのセットアップ（初回のみ）
+```bash
+docker compose run --rm api rails db:prepare
+```
+
+3. アプリケーションを起動
+```bash
+docker compose up
+```
+
+### 日常的な開発
+
+- アプリケーション起動: `docker compose up`
+- マイグレーション実行: `docker compose exec api rails db:migrate`
+- Rails コンソール: `docker compose exec api rails console`
+- テスト実行: `docker compose exec api rails test`

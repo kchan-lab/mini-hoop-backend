@@ -19,5 +19,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_09_113051) do
     t.string "line_user_id", null: false, comment: "LINEユーザーID"
     t.string "name", null: false, comment: "保護者名"
     t.datetime "updated_at", null: false
+    t.index ["line_user_id"], name: "index_parents_on_line_user_id", unique: true
   end
 end

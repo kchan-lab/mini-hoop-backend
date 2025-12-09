@@ -1,24 +1,96 @@
-# README
+# MiniHoop Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MiniHoop は、ミニバスケットボールチームの「練習スケジュール共有」「出欠管理」「月謝確認」をオンラインで完結させるための Web アプリケーションです。
 
-Things you may want to cover:
+このリポジトリは、MiniHoop の **バックエンド API（Ruby on Rails）** を管理します。
 
-* Ruby version
 
-* System dependencies
+## 🏀 アプリ概要
 
-* Configuration
+MiniHoop は、ミニバスケットボール（小学生向け）のチーム運営をサポートするためのアプリケーションです。
 
-* Database creation
+これまでLINEメッセージ、口頭で行っていた以下のような運用をWebアプリとして整理し、  
+コーチ・保護者双方の負担を減らすことを目的としています。
 
-* Database initialization
+- 練習スケジュールの作成・共有
+- 各練習日の出欠管理
+- 月謝の支払い状況の可視化
+- 練習終了時のLINE通知送信
+- 新規参加者からの問い合わせ受付
 
-* How to run the test suite
+本バックエンドは、これらの機能を支える **API・ドメインロジック・非同期処理** を提供します。
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 🎯 作成に至った背景
 
-* ...
+開発者はミニバスケットボールチームのコーチとして、以下のような課題を日常的に感じていました。
+
+- 毎月、iPhone アプリで縦型カレンダーを作成し、スクリーンショットを撮って LINE グループに共有している
+- その後、保護者から個別に「この日参加できます／できません」と連絡が届き、把握が大変
+- 月謝は封筒での手渡し＋ハンコ管理のため、「誰がどの月まで支払い済みか」を瞬時に把握しづらい
+- すべてがLINEの運用に閉じており、履歴の検索性・一覧性が低い
+
+これらの課題を **自分自身のコーチ業の改善** として解決したい、  
+かつ **Web バックエンドエンジニアとしての実務的なスキルをポートフォリオとして示したい**、  
+という二つの目的から本プロジェクトを立ち上げています。
+
+
+## 🧱 このリポジトリの役割
+
+- フロントエンド（Next.js）からのリクエストを受け付ける **JSON API** を提供
+- 以下のようなドメインロジックを実装
+  - 練習スケジュールの CRUD
+  - 出欠情報の管理（選手ごと／日付ごと）
+  - 月謝支払いステータスの管理
+- LINE など外部サービスとの連携（通知など）を想定したエンドポイントやジョブを提供
+- 将来的に以下を追加予定
+  - LINE 通知を使ったリマインドジョブ（Sidekiq）
+  - 管理者／保護者などの認証・権限管理
+
+
+## 🛠 使用技術スタック
+
+### 言語・フレームワーク
+
+- Ruby 3.4.7
+- Ruby on Rails 8.1 (API Mode)
+
+### データベース・ミドルウェア
+
+- PostgreSQL 15
+
+### インフラ・デプロイ
+
+- Docker / Docker Compose（ローカル開発環境）
+- （予定）Fly.io（Staging / Production 環境）
+
+### 開発ツール・その他
+
+- GitHub / GitHub Actions（CI/CD）
+- RSpec（テスト）
+- RuboCop（Lint）
+- dotenv-rails（環境変数管理）
+
+
+## 🧪 主な機能（予定を含む）
+
+- 練習スケジュール API
+  - `GET /api/v1/schedules`
+  - `POST /api/v1/schedules`
+  - `PATCH /api/v1/schedules/:id`
+  - `DELETE /api/v1/schedules/:id`
+- 出欠管理 API
+  - 指定練習日の出欠情報の取得／更新
+- 月謝管理 API
+  - 選手ごとの月ごとの支払いステータス管理
+- 認証（設計中）
+  - 管理者：LINE ログイン or Firebase Auth からのトークンを検証し、自前 JWT を発行
+  - 保護者：LINE ログインを想定
+
+
+## ⚙️ 環境構築方法
+
+※ まだ整理中のため、後で追記します。
+
+```bash
+# TODO: docker compose / Rails 初期設定 / DB マイグレーション手順などを記載

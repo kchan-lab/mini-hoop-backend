@@ -18,5 +18,4 @@ RUN gem install rails -v 8.1 -N
 COPY . .
 
 EXPOSE 3000
-# 初回も動くように db:prepare を実行してから起動
-CMD ["bash", "-lc", "bundle exec rails db:prepare && bundle exec rails s -b 0.0.0.0 -p 3000"]
+CMD ["bash", "-lc", "bundle exec rails s -b 0.0.0.0 -p 3000"]

@@ -47,6 +47,19 @@ MiniHoop は、ミニバスケットボール（小学生向け）のチーム�
   - LINE 通知を使ったリマインドジョブ（Sidekiq）
   - 管理者／保護者などの認証・権限管理
 
+## 環境構築
+
+### 環境変数について
+`dotenvx`(https://dotenvx.com/)を採用しています。事前に環境へインストールをお願いします。
+
+### 手順
+1. `.env.keys`を`mini-hoop-backend`直下に配置する(`.env.keys`はKeichanが管理しているので、連絡ください)
+2. 以下のコマンドを順に実行する
+
+```bash
+cp .env.dev .env
+dotenvx decrypt -f .env
+```
 
 ## 🛠 使用技術スタック
 

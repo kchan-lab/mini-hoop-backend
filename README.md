@@ -53,7 +53,7 @@ MiniHoop は、ミニバスケットボール（小学生向け）のチーム�
 ### 言語・フレームワーク
 
 - Ruby 3.4.7
-- Ruby on Rails 8.1（API Mode）
+- Ruby on Rails 8.1 (API Mode)
 
 ### データベース・ミドルウェア
 

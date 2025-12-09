@@ -50,7 +50,9 @@ MiniHoop は、ミニバスケットボール（小学生向け）のチーム�
 ## 環境構築
 
 ### 環境変数について
-`dotenvx`(https://dotenvx.com/)を採用しています。事前に環境へインストールをお願いします。
+`dotenvx`を採用しています。事前に環境へインストールをお願いします。
+
+https://dotenvx.com/
 
 ### 手順
 1. `.env.keys`を`mini-hoop-backend`直下に配置する(`.env.keys`はKeichanが管理しているので、連絡ください)
